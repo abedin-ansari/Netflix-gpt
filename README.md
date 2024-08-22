@@ -10,21 +10,23 @@ Currently, two official plugins are available:
 # Netflix GPT
 
 - npm create vite@latest netflix-gpt (With - JavaScript+SWC)
--Configured Tailwind CSS
+- Configured Tailwind CSS
+- Header
+  -Login form
 
 # Features
 
-Login/Logout
-    - Sign In /Sign Up Form
-    - Redirected to Browse
+Login/Logout - Sign In /Sign Up Form - Redirected to Browse
+
 - Browse (After the Authentication)
-    - Header
-    - Main Movie
-        - Trailer in Background
-        - Title & Description
-        - Movie Suggestions
-            - Movielists * n
+
+  - Header
+  - Main Movie
+    - Trailer in Background
+    - Title & Description
+    - Movie Suggestions
+      - Movielists \* n
 
 - Netflix-GPT
-    - Search Bar
-    - Movie Suggesions
+  - Search Bar
+  - Movie Suggesions
