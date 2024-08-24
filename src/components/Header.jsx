@@ -3,7 +3,7 @@
 
 const Header = () => {
   return (
-    <div className="px-8 py-3 absolute bg-gradient-to-b from-black z-10">
+    <div className="px-8 py-6 absolute bg-gradient-to-b from-black z-10">
       {/* Absolute used for overlap*/}
       <img
         src="https://moviesmod.win/wp-content/uploads/2022/12/moviesmodnew-Custom.png"

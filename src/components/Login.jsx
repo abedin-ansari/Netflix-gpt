@@ -48,10 +48,15 @@ const Login = () => {
         <button className="bg-red-700 w-full p-3 my-6 rounded-lg">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p className="cursor-pointer" onClick={toggleSignInForm}>
-          {isSignInForm
-            ? "New to MoviesMod ? Register Now"
-            : "Already Registered? Sign In now"}
+
+        <p>
+          {isSignInForm ? "New to MoviesMod? " : "Already Registered? "}
+          <span
+            className="cursor-pointer text-blue-500"
+            onClick={toggleSignInForm}
+          >
+            {isSignInForm ? "Register Now" : "Sign In now"}
+          </span>
         </p>
       </form>
     </div>
