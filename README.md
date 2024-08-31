@@ -12,7 +12,32 @@ Currently, two official plugins are available:
 - npm create vite@latest netflix-gpt (With - JavaScript+SWC)
 - Configured Tailwind CSS
 - Header
+  -Routing of app
   -Login form
+  -sign up form
+- form validation
+- useRef Hook
+- firebase setup
+- Deploying our app to production
+- create sign up user Account
+- Implemented Sign In user API
+- Created Redux Store with userSlice
+- Implemented Sign Out
+- Updated Profile
+- Bug Fix: SignUp user displayName and picture profile Update
+- Bug Fix: If the user is not logged in then redirect /browse to /login page and vice versa
+- unsbuscribed to he onAuthStateChanges callback
+- Added Important Url's in constants.js
+- Register TMDB API & Register an APP and get Access token
+- Get data from TMDB nowPlayiingMovies API
+- Custom Hook for nowPlying movies
+- Created movieSlice
+- Updated store with movie data
+- Planning for main container and secondary container
+- fetch data for trailer video
+- update store with trailer video data
+- Embedded the Youtube Video and make it autoplay and mute
+- TailWind css to make MainContainer looks Awesome
 
 # Features
 
