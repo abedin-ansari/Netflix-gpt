@@ -1,10 +1,17 @@
 import useNowPlayingMovies from "../CustomHook/useNowPlayingMovies";
+import usePopulerMovies from "../CustomHook/usePopulerMovies";
+import useTopratedMovies from "../CustomHook/useTopratedMovies";
+import useUpcomingMovies from "../CustomHook/useUpcomingMovies";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
-  useNowPlayingMovies(); // Custom Hook
+  useNowPlayingMovies(); // Custom Hooks
+  usePopulerMovies();
+  useTopratedMovies();
+  useUpcomingMovies();
+
   return (
     <div>
       <Header />

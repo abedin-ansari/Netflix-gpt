@@ -39,6 +39,11 @@ Currently, two official plugins are available:
 - Embedded the Youtube Video and make it autoplay and mute
 - TailWind css to make MainContainer looks Awesome
 - Build secondary Container
+- Build movie list
+- Build movie card
+- TMDB Image CDN url
+- Made Browse page amazing with tailwind
+- useCutom hooks (Populer movies, upcoming movies, trending movies)
 
 # Features
 

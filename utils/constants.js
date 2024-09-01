@@ -4,6 +4,8 @@ export const userIcon_URL =
 export const App_LOGO_URL =
   "https://moviesmod.win/wp-content/uploads/2022/12/moviesmodnew-Custom.png";
 
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
+
 export const API_OPTIONS = {
   method: "GET",
   headers: {
