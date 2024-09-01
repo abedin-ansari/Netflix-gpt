@@ -38,6 +38,7 @@ Currently, two official plugins are available:
 - update store with trailer video data
 - Embedded the Youtube Video and make it autoplay and mute
 - TailWind css to make MainContainer looks Awesome
+- Build secondary Container
 
 # Features
 
