@@ -1,9 +1,10 @@
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
-  if (!movies) {
-    return <p>Loading...</p>; // Or some loading component
-  }
+  // if (!movies) {
+  //   return <p>Loading...</p>; // Or some loading component
+  // }
+  if (!movies || movies.length === 0) return <p>No movies found.</p>;
 
   return (
     <div className="px-5 text-white">
