@@ -44,6 +44,10 @@ Currently, two official plugins are available:
 - TMDB Image CDN url
 - Made Browse page amazing with tailwind
 - useCutom hooks (Populer movies, upcoming movies, trending movies)
+- GPT search Page
+- GPT SearchBar
+- Multilanguage feature in our app(\*)
+- Integrate Gpt API's
 
 # Features
 
