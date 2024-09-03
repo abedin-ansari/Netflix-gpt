@@ -9,9 +9,12 @@ const movieSlice = createSlice({
     searchedMovies: null,
     upcomingMovies: null,
     topratedMovies: null,
-    nowPlayingMovies: null,
+    nowPlayingMovies: [],
     populerMovies: null,
     trailerVideo: null,
+
+    selectedMovie: null, // To manage the selected movie
+    isTrailerPlaying: false, // To manage the iframe trailer state
   },
   reducers: {
     addSearchedMovies: (state, action) => {
@@ -35,6 +38,26 @@ const movieSlice = createSlice({
     addTrailerVideo: (state, action) => {
       state.trailerVideo = action.payload;
     },
+
+    setMovies: (state, action) => {
+      state.nowPlayingMovies = action.payload.nowPlayingMovies;
+      state.topratedMovies = action.payload.topratedMovies;
+      state.populerMovies = action.payload.populerMovies;
+      state.upcomingMovies = action.payload.upcomingMovies;
+    },
+    setTrailerVideo: (state, action) => {
+      state.trailerVideo = action.payload;
+    },
+    setSelectedMovie: (state, action) => {
+      state.selectedMovie = action.payload;
+    },
+    setIsTrailerPlaying: (state, action) => {
+      state.isTrailerPlaying = action.payload;
+    },
+    clearMovieData: (state) => {
+      state.selectedMovie = null;
+      state.trailerVideo = null;
+    },
   },
 });
 
@@ -46,4 +69,10 @@ export const {
   addTopratedMovies,
   addUpcomingMovies,
   addSearchedMovies,
+
+  setMovies,
+  setTrailerVideo,
+  setSelectedMovie,
+  setIsTrailerPlaying,
+  clearMovieData,
 } = movieSlice.actions;

@@ -47,7 +47,14 @@ Currently, two official plugins are available:
 - GPT search Page
 - GPT SearchBar
 - Multilanguage feature in our app(\*)
-- Integrate Gpt API's
+- Get OpenAI key
+- GPT Searcg API call
+- Fetched GPT Movie suggesioins from TMDB
+- Created GPT Slice Added Data there
+- Resuded MovieList componenet to make Movie suggesions container
+- Memoization
+- added env file
+- Made our site responsive
 
 # Features
 

@@ -1,27 +1,38 @@
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../../utils/constants";
-import { addTrailerVideo } from "../../utils/movieSlice";
+import { setTrailerVideo } from "../../utils/movieSlice"; // Update action name to match your implementation
 import { useEffect } from "react";
 
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
   const trailerVideo = useSelector((store) => store.movies.trailerVideo);
 
-  // Fetching the trailer video and updating the store with trailer video data
   const getMovieVideos = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/" +
-        movieId +
-        "/videos?language=en-US",
-      API_OPTIONS
-    );
-    const json = await data.json();
-    const filterData = json.results.filter((video) => video.type == "Trailer");
-    const trailer = filterData.length ? filterData[0] : json.results[0]; // If there is multiple trailer there will be only first will shown & If not there any trailer then first video played
-    dispatch(addTrailerVideo(trailer));
+    if (!movieId) return; // Ensure movieId is valid before fetching
+
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+        API_OPTIONS
+      );
+      const json = await response.json();
+      const filterData = json.results.filter(
+        (video) => video.type === "Trailer"
+      );
+      const trailer = filterData.length ? filterData[0] : json.results[0]; // Use the first trailer if available, else the first video
+      dispatch(setTrailerVideo(trailer));
+    } catch (error) {
+      console.error("Failed to fetch movie trailer", error);
+    }
   };
+
   useEffect(() => {
-    !trailerVideo && getMovieVideos();
-  }, []);
+    if (movieId) {
+      getMovieVideos(); // Fetch trailer when movieId changes
+    }
+  }, [movieId]); // Re-fetch on movieId change
+
+  return trailerVideo; // Return trailerVideo for possible use in components
 };
+
 export default useMovieTrailer;

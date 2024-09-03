@@ -26,6 +26,7 @@
 
 import { useSelector } from "react-redux";
 import MovieList from "./MovieList";
+import TrailerOverlay from "./TrailerOverlay";
 
 const GptMovieSuggesions = () => {
   const movie = useSelector((store) => store.movies);
@@ -40,6 +41,7 @@ const GptMovieSuggesions = () => {
       <h2>Movie Searched: {movieNamesTmdb}</h2>
       {/* Pass the search results to the MovieList component */}
       <MovieList title={movieNamesTmdb} movies={moviesResultsTmdb} />
+      <TrailerOverlay />
     </div>
   );
 };

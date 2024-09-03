@@ -7,10 +7,11 @@ import GptSearchPage from "./GptSearchPage";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import TrailerOverlay from "./TrailerOverlay";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-  useNowPlayingMovies(); // Custom Hooks
+  useNowPlayingMovies();
   usePopulerMovies();
   useTopratedMovies();
   useUpcomingMovies();
@@ -24,6 +25,7 @@ const Browse = () => {
         <>
           <MainContainer />
           <SecondaryContainer />
+          <TrailerOverlay />
         </>
       )}
     </div>

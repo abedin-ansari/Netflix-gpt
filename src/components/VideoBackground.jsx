@@ -1,15 +1,17 @@
 import { useSelector } from "react-redux";
 import useMovieTrailer from "../CustomHook/useMovieTrailer";
 
-const VideoBackgroung = ({ movieId }) => {
+const VideoBackground = () => {
+  const selectedMovie = useSelector((store) => store.movies.selectedMovie);
   const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
 
-  useMovieTrailer(movieId);
+  // Load the trailer for the selected movie
+  useMovieTrailer(selectedMovie?.id);
 
   return (
     <div className="w-screen">
       <iframe
-        className="w-screen h-screen aspect-video"
+        className="w-[100vw] md:w-screen md:h-screen aspect-video"
         src={
           "https://www.youtube.com/embed/" +
           trailerVideo?.key +
@@ -23,4 +25,4 @@ const VideoBackgroung = ({ movieId }) => {
   );
 };
 
-export default VideoBackgroung;
+export default VideoBackground;

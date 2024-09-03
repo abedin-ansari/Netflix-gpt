@@ -7,10 +7,11 @@ import { addUser, removeUser } from "../../utils/userSlice";
 import {
   App_LOGO_URL,
   SupportedLanguages,
-  userIcon_URL,
+  //userIcon_URL,
 } from "../../utils/constants";
 import { toggleGptSearchView } from "../../utils/gptSlice";
 import { changeLanguage } from "../../utils/configSlice";
+import { clearMovieData } from "../../utils/movieSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ const Header = () => {
         // ...
       } else {
         dispatch(removeUser());
+        dispatch(clearMovieData()); // Clear movie data
         navigate("/");
         // User is signed out
         // ...
@@ -71,46 +73,11 @@ const Header = () => {
   };
 
   return (
-    // <div className="px-4 w-screen sm:px-8 py-4 sm:py-6 absolute bg-gradient-to-b from-black z-10 flex justify-between">
-    //   {/* Absolute used for overlap*/}
-    //   <img
-    //     src={App_LOGO_URL}
-    //     alt="MoviesMod Logo"
-    //     className="w-32 sm:w-48 md:w-64"
-    //   />
-    //   {user && (
-    //     <div className="flex p-4">
-    //       {showGptSearch && (
-    //         <select
-    //           className="p-2 m-2 bg-blue-600 text-white"
-    //           onChange={handleLangChange}
-    //         >
-    //           {SupportedLanguages.map((lang) => (
-    //             <option key={lang.identifier} value={lang.identifier}>
-    //               {lang.name}
-    //             </option>
-    //           ))}
-    //         </select>
-    //       )}
-
-    //       <button
-    //         className="py-2 px-4 mx-4 bg-purple-700 text-white rounded-lg"
-    //         onClick={handleGptSearchClick}
-    //       >
-    //         {showGptSearch ? "Homepage" : "GPT Search"}
-    //       </button>
-    //       <img src={userIcon_URL} alt="User Icon" className="w-7 h-7" />
-    //       <button className="text-white" onClick={handleSignOut}>
-    //         Sign Out
-    //       </button>
-    //     </div>
-    //   )}
-    // </div>
     <div className="px-8 py-6 absolute bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between w-full">
       {/* Absolute used for overlap*/}
       <img src={App_LOGO_URL} alt="MoviesMod Logo" className="w-48 md:w-64" />
       {user && (
-        <div className="flex items-center">
+        <div className="flex items-center justify-between my-6 md:my-3">
           {showGptSearch && (
             <select
               className="p-2 mx-2 bg-blue-600 text-white"
@@ -124,14 +91,33 @@ const Header = () => {
             </select>
           )}
 
-          <button
+          {/* <button
             className="py-2 px-4 mx-4 bg-purple-700 text-white rounded-lg"
             onClick={handleGptSearchClick}
           >
             {showGptSearch ? "Homepage" : "GPT Search"}
           </button>
-          <img src={userIcon_URL} alt="User Icon" className="w-7 h-7" />
-          <button className="text-white ml-4" onClick={handleSignOut}>
+          <img
+            src={userIcon_URL}
+            alt="User Icon"
+            className="hidden md:inline-block w-7 h-7"
+          />
+          <button
+            className="text-white ml-2 bg-purple-700 md:bg-transparent p-2 rounded-lg"
+            onClick={handleSignOut}
+          >
+            Sign Out
+          </button> */}
+          <button
+            className="px-2 py-1 bg-cyan-950 text-cyan-600 border-cyan-600 border-2 mr-4 rounded text-sm sm:font-bold "
+            onClick={handleGptSearchClick}
+          >
+            {showGptSearch ? "Home" : "GPT Search"}
+          </button>
+          <button
+            className="px-2 py-1 bg-red-600 text-white mr-4 rounded text-sm sm:font-bold "
+            onClick={handleSignOut}
+          >
             Sign Out
           </button>
         </div>

@@ -10,16 +10,22 @@ const useNowPlayingMovies = () => {
   );
 
   const getNowPlayingMovies = async () => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?page=1",
-      API_OPTIONS
-    );
-    const json = await data.json();
-    dispatch(addNowPlayingMovies(json.results)); // Update the Store
+    try {
+      const response = await fetch(
+        "https://api.themoviedb.org/3/movie/now_playing?page=1",
+        API_OPTIONS
+      );
+      const json = await response.json();
+      dispatch(addNowPlayingMovies(json.results)); // Update the Store
+    } catch (error) {
+      console.error("Failed to fetch now playing movies", error);
+    }
   };
 
   useEffect(() => {
-    !nowPlayingMovies && getNowPlayingMovies(); // getnowplayingmovies only called when there is not nowplayingmovies
+    if (!nowPlayingMovies || nowPlayingMovies.length === 0) {
+      getNowPlayingMovies(); // Fetch movies only if not present
+    }
   }, []);
 };
 
