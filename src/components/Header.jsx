@@ -95,7 +95,7 @@ const Header = () => {
             className="px-2 py-1 bg-cyan-950 text-cyan-600 border-cyan-600 border-2 mr-4 rounded text-sm sm:font-bold "
             onClick={handleGptSearchClick}
           >
-            {showGptSearch ? "Home" : "GPT Search"}
+            {showGptSearch ? "Home" : "Search"}
           </button>
           <button
             className="px-2 py-1 bg-red-600 text-white mr-4 rounded text-sm sm:font-bold "
