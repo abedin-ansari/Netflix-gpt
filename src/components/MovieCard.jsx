@@ -20,7 +20,7 @@ const MovieCard = ({ movie, handlePlayClick }) => {
   return (
     <div className="w-36 md:w-48 pr-4 cursor-pointer" onClick={handleClick}>
       <img
-        className="h-56"
+        className="h-56 md:h-72"
         src={IMG_CDN_URL + movie.poster_path}
         alt="movieCard"
       />
