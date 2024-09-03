@@ -12,10 +12,12 @@ import {
 import { toggleGptSearchView } from "../../utils/gptSlice";
 import { changeLanguage } from "../../utils/configSlice";
 import { clearMovieData } from "../../utils/movieSlice";
+import useOnlineStatus from "../CustomHook/useOnlineStatus";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const onlineStatus = useOnlineStatus();
 
   const user = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
@@ -38,8 +40,6 @@ const Header = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       // Navigate authentication Routings for all signin register and logout will happen from onAuthStateChange
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
         const { uid, email, displayName, photoURL } = user;
         dispatch(
           addUser({
@@ -55,8 +55,6 @@ const Header = () => {
         dispatch(removeUser());
         dispatch(clearMovieData()); // Clear movie data
         navigate("/");
-        // User is signed out
-        // ...
       }
     });
 
@@ -90,24 +88,9 @@ const Header = () => {
               ))}
             </select>
           )}
-
-          {/* <button
-            className="py-2 px-4 mx-4 bg-purple-700 text-white rounded-lg"
-            onClick={handleGptSearchClick}
-          >
-            {showGptSearch ? "Homepage" : "GPT Search"}
-          </button>
-          <img
-            src={userIcon_URL}
-            alt="User Icon"
-            className="hidden md:inline-block w-7 h-7"
-          />
-          <button
-            className="text-white ml-2 bg-purple-700 md:bg-transparent p-2 rounded-lg"
-            onClick={handleSignOut}
-          >
-            Sign Out
-          </button> */}
+          <p className="px-5 text-white">
+            Online Status: {onlineStatus ? "🟢" : "🔴"}
+          </p>
           <button
             className="px-2 py-1 bg-cyan-950 text-cyan-600 border-cyan-600 border-2 mr-4 rounded text-sm sm:font-bold "
             onClick={handleGptSearchClick}

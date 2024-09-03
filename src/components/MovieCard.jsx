@@ -22,7 +22,7 @@ const MovieCard = ({ movie, handlePlayClick }) => {
       <img src={IMG_CDN_URL + movie.poster_path} alt="movieCard" />
 
       <button
-        className="bg-transparent text-white text-xs md:text-lg py-1 px-3 md:py-3 md:px-10 rounded border border-white"
+        className="bg-transparent text-white text-xs md:text-lg py-1 px-3 md:py-3 md:px-16 rounded border border-white hover:bg-gray-700"
         onClick={() => handlePlayClick(movie)}
       >
         Play Trailer

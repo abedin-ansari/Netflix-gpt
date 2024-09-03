@@ -14,7 +14,7 @@ const VideoTitle = ({ title, overview }) => {
       <p className="hidden md:inline-block py-4 w-1/3 text-lg">{overview}</p>
       <div className="my-2 md:my-0">
         <button
-          className="bg-transparent text-white text-xs md:text-lg py-1 px-3 md:py-3 md:px-10 rounded border border-white"
+          className="bg-transparent text-white text-xs md:text-lg py-1 px-3 md:py-3 md:px-10 rounded border border-white hover:bg-gray-700"
           onClick={handlePlayClick}
         >
           Play Trailer

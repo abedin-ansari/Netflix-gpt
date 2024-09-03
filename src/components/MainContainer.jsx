@@ -10,7 +10,6 @@ const MainContainer = () => {
   const movies = useSelector((store) => store.movies.nowPlayingMovies);
   const selectedMovie = useSelector((store) => store.movies.selectedMovie);
 
-  // Fetch trailer when selected movie changes
   const trailerVideo = useMovieTrailer(selectedMovie ? selectedMovie.id : null);
 
   // Set the default movie on initial load if not already selected
@@ -20,7 +19,6 @@ const MainContainer = () => {
     }
   }, [dispatch, selectedMovie, movies]);
 
-  // Early return if no movie is selected yet
   if (!selectedMovie) return null;
 
   const { original_title, overview, id } = selectedMovie;
