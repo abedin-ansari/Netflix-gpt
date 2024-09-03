@@ -19,10 +19,14 @@ const MovieCard = ({ movie, handlePlayClick }) => {
 
   return (
     <div className="w-36 md:w-48 pr-4 cursor-pointer" onClick={handleClick}>
-      <img src={IMG_CDN_URL + movie.poster_path} alt="movieCard" />
+      <img
+        className="h-56"
+        src={IMG_CDN_URL + movie.poster_path}
+        alt="movieCard"
+      />
 
       <button
-        className="bg-transparent text-white text-xs md:text-lg py-1 px-3 md:py-3 md:px-16 rounded border border-white hover:bg-gray-700"
+        className="bg-transparent text-white text-xs md:text-lg py-1 px-12 md:py-3 md:px-16 rounded border border-white hover:bg-gray-700"
         onClick={() => handlePlayClick(movie)}
       >
         Play Trailer
