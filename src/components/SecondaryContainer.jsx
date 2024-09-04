@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import MovieList from "./MovieList";
 import { useSelector } from "react-redux";
 
@@ -11,6 +12,9 @@ const SecondaryContainer = () => {
         <MovieList title={"Populer"} movies={movies.populerMovies} />
         {/* <MovieList title={"Horror"} movies={movies.nowPlayingMovies} /> */}
         <MovieList title={"Upcoming Movies"} movies={movies.upcomingMovies} />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
