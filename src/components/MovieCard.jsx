@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { IMG_CDN_URL } from "../../utils/constants";
 import { setSelectedMovie, setTrailerVideo } from "../../utils/movieSlice";
 import useMovieTrailer from "../CustomHook/useMovieTrailer";
+import PropTypes from "prop-types";
 
 const MovieCard = ({ movie, handlePlayClick }) => {
   const dispatch = useDispatch();
@@ -33,6 +34,14 @@ const MovieCard = ({ movie, handlePlayClick }) => {
       </button>
     </div>
   );
+};
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    poster_path: PropTypes.string,
+  }).isRequired,
+  handlePlayClick: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

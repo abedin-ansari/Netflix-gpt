@@ -1,4 +1,3 @@
-import { BG_IMG_SRCSET, BG_IMG_URL } from "../../utils/constants";
 import GptMovieSuggesions from "./GptMovieSuggesions";
 import GptSearchBar from "./GptSearchBar";
 

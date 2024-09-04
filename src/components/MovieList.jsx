@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { setIsTrailerPlaying, setSelectedMovie } from "../../utils/movieSlice";
 import MovieCard from "./MovieCard";
+import PropTypes from "prop-types";
 
 const MovieList = ({ title, movies }) => {
   const dispatch = useDispatch();
@@ -26,6 +27,16 @@ const MovieList = ({ title, movies }) => {
       </div>
     </div>
   );
+};
+
+MovieList.propTypes = {
+  title: PropTypes.string.isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default MovieList;
