@@ -31,6 +31,8 @@ const MovieCard = ({ movie, handlePlayClick }) => {
           className="w-full h-60 md:h-[22rem] rounded-lg object-cover"
           src={IMG_CDN_URL + movie.poster_path}
           alt={movie.title || "Movie Poster"}
+          loading="lazy"
+          decoding="async"
         />
 
         {/* Overlay on Hover */}

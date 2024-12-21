@@ -72,6 +72,8 @@ const MovieList = ({ title, movies }) => {
     }
   };
 
+  const isDuplicate = window.innerWidth > 768; // Only duplicate on desktop
+
   if (!movies || movies.length === 0) return null;
 
   return (
@@ -90,7 +92,6 @@ const MovieList = ({ title, movies }) => {
         }}
       >
         <div className="flex gap-4">
-          {/* Duplicate movies for infinite scroll effect */}
           {movies?.map((movie) => (
             <MovieCard
               key={movie.id}
@@ -98,13 +99,15 @@ const MovieList = ({ title, movies }) => {
               handlePlayClick={handlePlayClick}
             />
           ))}
-          {movies?.map((movie) => (
-            <MovieCard
-              key={`${movie.id}-duplicate`}
-              movie={movie}
-              handlePlayClick={handlePlayClick}
-            />
-          ))}
+          {/* Only duplicate on desktop */}
+          {isDuplicate &&
+            movies?.map((movie) => (
+              <MovieCard
+                key={`${movie.id}-duplicate`}
+                movie={movie}
+                handlePlayClick={handlePlayClick}
+              />
+            ))}
         </div>
       </div>
     </div>
