@@ -16,7 +16,7 @@ const useNowPlayingMovies = () => {
         API_OPTIONS
       );
       const json = await response.json();
-      dispatch(addNowPlayingMovies(json.results)); // Update the Store
+      dispatch(addNowPlayingMovies(json.results));
     } catch (error) {
       console.error("Failed to fetch now playing movies", error);
     }

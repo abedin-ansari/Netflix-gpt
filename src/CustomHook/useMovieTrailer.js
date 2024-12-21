@@ -4,69 +4,74 @@ import { API_OPTIONS } from "../../utils/constants";
 import { setTrailerVideo } from "../../utils/movieSlice";
 
 const useMovieTrailer = (movieId) => {
-  // Accept movieId as a parameter
   const dispatch = useDispatch();
 
-  const getMovieVideos = async (movieId) => {
+  const getMovieVideos = async (movieId, retryCount = 3) => {
     if (!movieId) return null;
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
-        API_OPTIONS
-      );
-      const json = await response.json();
-      const filterData = json.results.filter(
-        (video) => video.type === "Trailer"
-      );
-      const trailer = filterData.length ? filterData[0] : json.results[0]; // Use the first trailer if available, else the first video
-      dispatch(setTrailerVideo(trailer));
-      return trailer;
-    } catch (error) {
-      console.error("Failed to fetch movie trailer", error);
-      return null;
+
+    for (let attempt = 0; attempt < retryCount; attempt++) {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
+          API_OPTIONS
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const json = await response.json();
+
+        if (!json.results?.length) {
+          console.warn("No video results found for movie:", movieId);
+          return null;
+        }
+
+        const filterData = json.results.filter(
+          (video) => video.type === "Trailer"
+        );
+        const trailer = filterData.length ? filterData[0] : json.results[0];
+
+        if (trailer) {
+          dispatch(setTrailerVideo(trailer));
+          return trailer;
+        }
+
+        throw new Error("No valid trailer found");
+      } catch (error) {
+        console.error(`Attempt ${attempt + 1} failed:`, error);
+
+        if (attempt === retryCount - 1) {
+          console.error("All retry attempts failed for movie:", movieId);
+          dispatch(setTrailerVideo(null));
+          return null;
+        }
+
+        // Wait before retrying (exponential backoff)
+        await new Promise((resolve) =>
+          setTimeout(resolve, 1000 * Math.pow(2, attempt))
+        );
+      }
     }
   };
 
-  // useEffect to automatically fetch trailer when movieId changes
   useEffect(() => {
-    if (movieId) {
-      getMovieVideos(movieId); // Call the function with movieId
-    }
-  }, [movieId]); // Dependency array to trigger on movieId change
+    let isMounted = true;
+
+    const fetchTrailer = async () => {
+      if (movieId && isMounted) {
+        await getMovieVideos(movieId);
+      }
+    };
+
+    fetchTrailer();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [movieId]);
 
   return getMovieVideos;
 };
 
 export default useMovieTrailer;
-
-// import { useDispatch } from "react-redux";
-// import { API_OPTIONS } from "../../utils/constants";
-// import { setTrailerVideo } from "../../utils/movieSlice";
-
-// const useMovieTrailer = () => {
-//   const dispatch = useDispatch();
-
-//   const getMovieVideos = async (movieId) => {
-//     if (!movieId) return null;
-//     try {
-//       const response = await fetch(
-//         `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
-//         API_OPTIONS
-//       );
-//       const json = await response.json();
-//       const filterData = json.results.filter(
-//         (video) => video.type === "Trailer"
-//       );
-//       const trailer = filterData.length ? filterData[0] : json.results[0]; // Use the first trailer if available, else the first video
-//       dispatch(setTrailerVideo(trailer));
-//       return trailer;
-//     } catch (error) {
-//       console.error("Failed to fetch movie trailer", error);
-//       return null;
-//     }
-//   };
-
-//   return getMovieVideos;
-// };
-
-// export default useMovieTrailer;

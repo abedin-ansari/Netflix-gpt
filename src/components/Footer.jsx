@@ -1,75 +1,115 @@
 const Footer = () => {
   return (
-    <footer className="footer mt-8 bg-gray-900 text-white py-6 md:py-8">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 gap-6 md:gap-8">
-          {/* About Section */}
-          <div className="footer-about">
-            <h2 className="text-center md:text-left text-base md:text-2xl mb-3 md:mb-4">
-              About MoviesMod
-            </h2>
-            <p className="text-center md:text-left text-sm md:text-base">
-              MoviesMod is your ultimate destination to explore and discover
-              movies, series, and the latest trailers. With detailed information
-              and reviews, you can find your next favorite movie with ease.
-            </p>
-            <div className="social-links mt-3 flex justify-center md:justify-start space-x-4">
-              <a
-                href="https://www.linkedin.com/in/jainul-ansari-9a1434261?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-                className="linkedin text-blue-700 hover:underline text-lg"
-              >
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/jainul.62?igsh=MXByaW5xbmU3eG8zZg=="
-                className="instagram text-pink-400 hover:underline text-lg"
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
-            </div>
-          </div>
+    <footer className="bg-black text-gray-400 py-8 px-4 md:px-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Social Links */}
+        <div className="flex gap-6 mb-8">
+          <a href="#" className="hover:text-white transition-colors">
+            <i className="fab fa-facebook-f text-2xl"></i>
+          </a>
+          <a href="#" className="hover:text-white transition-colors">
+            <i className="fab fa-instagram text-2xl"></i>
+          </a>
+          <a href="#" className="hover:text-white transition-colors">
+            <i className="fab fa-twitter text-2xl"></i>
+          </a>
+          <a href="#" className="hover:text-white transition-colors">
+            <i className="fab fa-youtube text-2xl"></i>
+          </a>
+        </div>
 
-          {/* Contact Us Section */}
-          <div className="footer-contact mt-1 md:mt-0">
-            <h4 className="text-center md:text-left text-base md:text-2xl mb-3 md:mb-4">
-              Contact Us
-            </h4>
-            <p className="text-center md:text-left text-sm md:text-base">
-              We'd love to hear from you! For any inquiries, feedback, or just
-              to say hello, feel free to reach out to us.
-            </p>
-            <p className="mt-2 text-center md:text-left">
-              <a
-                href="mailto:jainulansari579@gmail.com"
-                className="text-blue-600 hover:underline"
-              >
-                Click here to contact us
-              </a>
-            </p>
-            <p className="text-center md:text-left text-xs md:text-sm text-gray-400 mt-3 md:mt-4">
-              We’ll get back to you as soon as possible.
-            </p>
+        {/* Footer Links */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Audio Description
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Investor Relations
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Legal Notices
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Help Center
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Jobs
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Cookie Preferences
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Gift Cards
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Terms of Use
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Corporate Information
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul className="space-y-2">
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Media Center
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Privacy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white transition-colors">
+                  Contact Us
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="foot-container mt-6 md:mt-8 text-center border-t border-gray-700 pt-4">
-          <div className="copyright text-xs md:text-base text-gray-400">
-            &copy; Copyright{" "}
-            <strong>
-              <span>MoviesMod</span>
-            </strong>
-            . All Rights Reserved
-          </div>
-          <div className="credits text-xs md:text-base text-gray-400 mt-2">
-            Designed by{" "}
-            <a
-              href="https://www.instagram.com/jainul.62?igsh=MXByaW5xbmU3eG8zZg=="
-              className="hover:underline"
-            >
-              Abedin
-            </a>
-          </div>
+        {/* Service Code Button */}
+        <button className="border border-gray-400 px-4 py-2 mb-8 hover:text-white transition-colors">
+          Service Code
+        </button>
+
+        {/* Copyright */}
+        <div className="text-sm">
+          <p>© 1997-{new Date().getFullYear()} Netflix GPT, Inc.</p>
+          <p className="mt-2">
+            Netflix GPT is a demo project created for learning purposes. All
+            movie data is provided by TMDB.
+          </p>
         </div>
       </div>
     </footer>

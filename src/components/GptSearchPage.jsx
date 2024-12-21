@@ -6,7 +6,7 @@ const GptSearchPage = () => {
     <>
       <div className="fixed -z-10">
         <img
-          src="https://img.freepik.com/free-photo/movie-background-collage_23-2149876028.jpg"
+          src="https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg"
           alt="Background Image"
           aria-hidden="true"
           className="h-screen object-cover w-screen"
