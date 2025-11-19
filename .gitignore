@@ -43,3 +43,5 @@ yarn.lock
 
 # Tailwind output
 styles.css
+
+.vercel
